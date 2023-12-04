@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="/public/script.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container pt-5">
+        <h1 class="display-1">TOYS</h1>
+        <table class="table  border border-2">
+            <thead>
+                <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">description</th>
+                    <th scope="col">url</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">GET</th>
+                    <td>בקשה כללית לצעצועים במערכת</td>
+                    <td><a href="/api/v1/toys?page=1" target="#toysContent"
+                            onclick="openInNewWindow(); return false;">/toys?page=1</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">GET</th>
+                    <td>בקשה לחיפוש מוצר לפי השם או ה INFO שלו</td>
+                    <td class="url">
+                        <a href="/api/v1/toys/search?s=train&page=1" target="_blank">
+                            /toys/search?s=train&page=1</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">GET</th>
+                    <td>בקשת צעצוע לפי קטגוריה</td>
+                    <td><a href="/api/v1/toys/category/children?page=1"
+                            target="#toysContent">/toys/category/children?page=1</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">GET</th>
+                    <td>ישלוף רק רשומה אחת לפי איי די</td>
+                    <td><a href="/api/v1/toys/656d8fe505b5bb438774965c"
+                            target="#toysContent">/toys/656d8fe505b5bb438774965c</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">POST</th>
+                    <td>הוספת צעצוע - מוסיף את
+                        הID_USER של המשתמש שהוסיף אותו לפי
+                        הטוקן</td>
+                    <td>/toys</td>
+                </tr>
+                <tr>
+                    <th scope="row">PUT</th>
+                    <td>עריכת צעצוע- לפי הפרמס של ה
+                        EDITID ולדאוג שהרשומה לפי הטוקן קשור
+                        USER_ID ל</td>
+                    <td>/toys/656c4f0d31b2854fd12d8e40</td>
+                </tr>
+                <tr>
+                    <th scope="row">DELETE</th>
+                    <td>*מחיקת צעצוע- DELETE לפי הפרמס של ה
+                        DELID</td>
+                    <td>/toys/656c4f0d31b2854fd12d8e40</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container pt-5">
+        <h1 class="display-1">USERS</h1>
+        <table class="table border border-2">
+            <thead>
+                <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">description</th>
+                    <th scope="col">url</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">GET</th>
+                    <td>קבלת כל המשתמשים</td>
+                    <td class="url"><a href="/api/v1/users" target="#toysContent">/users</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">POST</th>
+                    <td>הוספת משתמש למערכת, תוך כדי הצפנת סיסמא</td>
+                    <td class="url">/users/register</td>
+                </tr>
+                <tr>
+                    <th scope="row">POST</th>
+                    <td>כניסת משתמש עבור יצירה, עריכה וקבלת מידע בטבלת TOYS</td>
+                    <td class="url">/users/login</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        a:hover {
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function openInNewWindow() {
+            var content = document.getElementById('contentToOpen').innerHTML;
+            window.open('', '_blank').document.body.innerHTML = content;
+        }
+    </script>
+</body>
+
+</html>
