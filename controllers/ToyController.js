@@ -64,12 +64,14 @@ exports.getMyToys = async (req, res, next) => {
 // }
 
 exports.getToyByNameOrInfo = async (req, res, next) => {
+    console.log("gcghvbkjbj");
     try {
         const s = req.query.s;
+        console.log(s);
         const page = req.query.page;
         const perPage = 10;
         const skip = (page - 1) * perPage;
-        const toys = await Toy.findOne({ $or: [{ name: s }, { info: s }] }).skip(skip).limit(perPage);
+        const toys = await Toy.find({ $or: [{ name: s }, { info: s }] }).skip(skip).limit(perPage);
         console.log((toys));
         res.status(200).send(toys)
     } catch (error) {
